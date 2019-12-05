@@ -1,0 +1,10 @@
+import "bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import ReactDom  from "react-dom";
+import * as serviceWorker from './serviceWorker';
+import Navigator from "./navigator";
+import Content from "./content";
+ReactDom.render(<Navigator/>, document.getElementById('navigator'));
+ReactDom.render(<Content/>, document.getElementById('container'));
+serviceWorker.unregister();
