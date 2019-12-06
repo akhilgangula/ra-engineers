@@ -1,68 +1,115 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Introduction
+============
 
-## Available Scripts
+[![Build Status](https://img.shields.io/travis/ColorlibHQ/AdminLTE/master.svg)](https://travis-ci.org/ColorlibHQ/AdminLTE)
+[![npm version](https://img.shields.io/npm/v/admin-lte/latest.svg)](https://www.npmjs.com/package/admin-lte)
+[![Packagist](https://img.shields.io/packagist/v/almasaeed2010/adminlte.svg)](https://packagist.org/packages/almasaeed2010/adminlte)
+[![CDNJS](https://img.shields.io/cdnjs/v/admin-lte.svg)](https://cdnjs.com/libraries/admin-lte)
 
-In the project directory, you can run:
+**AdminLTE** is a fully responsive administration template. Based on **[Bootstrap 4](https://getbootstrap.com)** framework.
+Highly customizable and easy to use. Fits many screen resolutions from small mobile devices to large desktops.
 
-### `npm start`
+**Preview on [AdminLTE.io](https://adminlte.io/themes/v3)**
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Looking for Premium Templates?
+------------------------------
+AdminLTE.io just opened a new premium templates page. Hand picked to insure the best quality and the most affordable
+prices. Visit https://adminlte.io/premium for more information.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+!["AdminLTE Presentation"](https://adminlte.io/AdminLTE3.png "AdminLTE Presentation")
 
-### `npm test`
+**AdminLTE** has been carefully coded with clear comments in all of its JS, SCSS and HTML files.
+SCSS has been used to increase code customizability.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Installation
+------------
+There are multiple ways to install AdminLTE.
 
-### `npm run build`
+#### Download:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Download from [Github releases](https://github.com/ColorlibHQ/AdminLTE/releases).
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+#### Using The Command Line:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+__Via NPM__
+```bash
+npm install admin-lte@^3.0 --save
+```
 
-### `npm run eject`
+__Via Yarn__
+```bash
+yarn add admin-lte@^3.0
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+__Via Composer__
+```bash
+composer require "almasaeed2010/adminlte=~3.0"
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+__Via Git__
+- Clone to your machine
+```
+git clone https://github.com/ColorlibHQ/AdminLTE.git
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Documentation
+-------------
+Visit the [online documentation](https://adminlte.io/docs/3.0/) for the most
+updated guide. Information will be added on a weekly basis.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Browser Support
+---------------
+- IE 10+
+- Firefox (latest)
+- Chrome (latest)
+- Safari (latest)
+- Opera (latest)
 
-## Learn More
+Contribution
+------------
+Contribution are always **welcome and recommended**! Here is how:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Fork the repository ([here is the guide](https://help.github.com/articles/fork-a-repo/)).
+- Clone to your machine ```git clone https://github.com/YOUR_USERNAME/AdminLTE.git```
+- Create a new branch
+- Make your changes
+- Create a pull request
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Compile dist files
+To compile the dist files you need nodejs/npm, clone/download the repo then:
 
-### Code Splitting
+1. `npm install` (install npm deps)
+2. _Optional:_ `npm dev` (developer mode, autocompile with browsersync support for live demo)
+3. `npm run production` (compile css/js files)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+#### Contribution Requirements:
+- When you contribute, you agree to give a non-exclusive license to AdminLTE.io to use that contribution in any context as we (AdminLTE.io) see appropriate.
+- If you use content provided by another party, it must be appropriately licensed using an [open source](http://opensource.org/licenses) license.
+- Contributions are only accepted through Github pull requests.
+- Finally, contributed code must work in all supported browsers (see above for browser support).
 
-### Analyzing the Bundle Size
+License
+-------
+AdminLTE is an open source project by [AdminLTE.io](https://adminlte.io) that is licensed under [MIT](http://opensource.org/licenses/MIT). AdminLTE.io
+reserves the right to change the license of future releases.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Legacy Releases
+---------------
+- [AdminLTE 2](https://github.com/ColorlibHQ/AdminLTE/releases/tag/v2.4.18)
+- [AdminLTE 1](https://github.com/ColorlibHQ/AdminLTE/releases/tag/1.3.1)
 
-### Making a Progressive Web App
+Change log
+----------
+Visit the [releases](https://github.com/ColorlibHQ/AdminLTE/releases) page to view the changelog
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Image Credits
+-------------
+[Pixeden](http://www.pixeden.com/psd-web-elements/flat-responsive-showcase-psd)
 
-### Advanced Configuration
+[Graphicsfuel](http://www.graphicsfuel.com/2013/02/13-high-resolution-blur-backgrounds/)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+[Pickaface](http://pickaface.net/)
 
-### Deployment
+[Unsplash](https://unsplash.com/)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[Uifaces](http://uifaces.com/)
