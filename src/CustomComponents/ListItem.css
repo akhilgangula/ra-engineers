@@ -1,0 +1,4 @@
+.menu-open {
+    transition-timing-function: linear;
+    transition-duration: 2s;
+}
