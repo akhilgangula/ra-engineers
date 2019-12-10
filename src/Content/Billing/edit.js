@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../assets/css/adminlte.min.css'
 import '../../assets/plugins/fontawesome-free/css/all.min.css'
-class CreateBill extends React.Component {
+class EditBill extends React.Component {
 
     render() {
         return (
@@ -12,33 +12,28 @@ class CreateBill extends React.Component {
                             <div className="card card-secondary">
                                 <div className="card-header">
                                     <h3 className="card-title">Customer Basic Details</h3>
+                                    <div class="card-tools">
+                                        <div class="input-group input-group-sm" style={{width: '300px'}}>
+                                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search for INVOICE ID"/>
+                                            <div class="input-group-append">
+                                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                     <div className="card-body">
                                         <div className="row">
                                             <div className="col-sm-3">
                                                 <div className="form-group">
                                                     <label>Order ID</label>
-                                                    <input type="text" className="form-control" placeholder="ORD - XXXXX"/>
+                                                    <input type="text" className="form-control" placeholder="ORD - XXXXX" disabled/>
                                                 </div>
                                             </div>
-                                            <div className="col-sm-3">
-                                                <div className="form-group">
-                                                    <label>Invoice ID</label>
-                                                    <input type="text" className="form-control" placeholder="INV - XXXXX"/>
-                                                </div>
-                                            </div>
+                                            
                                             <div className="col-sm-3">
                                                 <div className="form-group">
                                                     <label>Customer ID</label>
-                                                    <input type="text" className="form-control" placeholder="CUST - XXXXX"/>
-                                                </div>
-                                            </div>
-                                            <div className="col-sm-2">
-                                                <div className="form-group">
-                                                    <div className="custom-control custom-switch">
-                                                        <input type="checkbox" className="custom-control-input" id="customSwitch1"/>
-                                                        <label className="custom-control-label" htmlFor="customSwitch1">Edit Address Manually?</label>
-                                                    </div>
+                                                    <input type="text" className="form-control" placeholder="CUST - XXXXX" disabled/>
                                                 </div>
                                             </div>
                                         </div>
@@ -143,4 +138,4 @@ class CreateBill extends React.Component {
 
 }
 
-export default CreateBill
+export default EditBill

@@ -4,38 +4,39 @@ class OrderStatus extends React.Component {
     render() {
         return (
             <div>
-                <div class="col-md-6">
-                    <div class="card card-warning">
-                        <div class="card-header">
-                            <h3 class="card-title">Update Status</h3>
+                <div className="col-md-6">
+                    <div className="card card-warning">
+                        <div className="card-header">
+                            <h3 className="card-title">Update Status</h3>
                         </div>
-                        <div class="card-body">
+                        <div className="card-body">
                             <form role="form">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
+                                <div className="row">
+                                    <div className="col-sm-6">
+                                        <div className="form-group">
                                             <label>Invoice ID</label>
-                                            <input type="text" class="form-control" placeholder="INV-XXX"/>
+                                            <input type="text" className="form-control" placeholder="INV-XXX"/>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
+                                    <div className="col-sm-6">
+                                        <div className="form-group">
                                             <label>Customer ID</label>
-                                            <input type="text" class="form-control" placeholder="CUST-XXX" disabled/>
+                                            <input type="text" className="form-control" placeholder="CUST-XXX" disabled/>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
+                                <div className="row">
+                                    <div className="col-sm-6">
+                                        <div className="form-group">
                                             <label>Quantity</label>
-                                            <input type="text" class="form-control" placeholder="Quantity"/>
+                                            <input type="text" className="form-control" placeholder="Quantity"/>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
+                                    <div className="col-sm-6">
+                                        <div className="form-group">
                                             <label>Update Status</label>
-                                            <select class="form-control">
+                                            <select className="form-control">
+                                                <option>Order Rejected</option>
                                                 <option>New</option>
                                                 <option>Pending</option>
                                                 <option>Shipped</option>
@@ -44,9 +45,15 @@ class OrderStatus extends React.Component {
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Comments</label>
+                                            <textarea class="form-control" rows="3" placeholder="Why is the status changed?"></textarea>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                <div className="card-footer">
+                                    <button type="submit" className="btn btn-primary">Update</button>
                                 </div>
                             </form>
                         </div>

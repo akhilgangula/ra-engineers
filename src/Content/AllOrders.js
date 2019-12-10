@@ -3,24 +3,24 @@ import React from 'react'
 class AllOrders extends React.Component {
     render() {
         return (
-            <div class="row">
-            <div class="col-12">
-                <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Viewing all Orders</h3>
+            <div className="row">
+            <div className="col-12">
+                <div className="card">
+                <div className="card-header">
+                    <h3 className="card-title">Viewing all Orders</h3>
 
-                    <div class="card-tools">
-                    <div class="input-group input-group-sm" style={{width: '150px'}}>
-                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search"/>
+                    <div className="card-tools">
+                    <div className="input-group input-group-sm" style={{width: '150px'}}>
+                        <input type="text" name="table_search" className="form-control float-right" placeholder="Search"/>
 
-                        <div class="input-group-append">
-                        <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                        <div className="input-group-append">
+                        <button type="submit" className="btn btn-default"><i className="fas fa-search"></i></button>
                         </div>
                     </div>
                     </div>
                 </div>
-                <div class="card-body table-responsive p-0" style={{height: '500px'}}>
-                    <table class="table table-head-fixed">
+                <div className="card-body table-responsive p-0" style={{height: '500px'}}>
+                    <table className="table table-head-fixed">
                     <thead>
                             <tr>
                             <th>Order ID</th>

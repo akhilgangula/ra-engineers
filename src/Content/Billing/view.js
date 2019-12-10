@@ -3,43 +3,43 @@ import React from 'react'
 class View extends React.Component {
     render() {
         return (
-            <div class='row'>
-                <div class='col-sm-12'>
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Billing</h3>
+            <div className='row'>
+                <div className='col-sm-12'>
+                    <div className="card card-primary">
+                        <div className="card-header">
+                            <h3 className="card-title">Billing</h3>
                         </div>
                         <form role="form">
-                            <div class="card-body">
-                                <div class='row'>
-                                    <div class='col-sm-3'>
-                                        <div class="form-group">
+                            <div className="card-body">
+                                <div className='row'>
+                                    <div className='col-sm-3'>
+                                        <div className="form-group">
                                             <label>Order ID</label>
-                                            <input type="text" class="form-control" placeholder="ORD-XXXXX" disabled/>
+                                            <input type="text" className="form-control" placeholder="ORD-XXXXX" disabled/>
                                         </div>
                                     </div>
-                                        <div class='col-sm-3'>
-                                        <div class="form-group">
+                                        <div className='col-sm-3'>
+                                        <div className="form-group">
                                             <label>Invoice ID</label>
-                                            <input type="text" class="form-control" placeholder="INV-XXXXX"/>
+                                            <input type="text" className="form-control" placeholder="INV-XXXXX"/>
                                         </div>
                                     </div>
-                                    <div class='col-sm-3'>
-                                        <div class="form-group">
+                                    <div className='col-sm-3'>
+                                        <div className="form-group">
                                             <label>Customer ID</label> 
-                                            <input type="text" class="form-control" placeholder="CUST-XXXXX" disabled/>
+                                            <input type="text" className="form-control" placeholder="CUST-XXXXX" disabled/>
                                         </div>
                                     </div>
-                                    <div class='col-sm-3'>
-                                        <div class="form-group">
+                                    <div className='col-sm-3'>
+                                        <div className="form-group">
                                             <label>Payment Due Date </label>
-                                            <input type="text" class="form-control" placeholder="Payment Due Date" disabled/>
+                                            <input type="text" className="form-control" placeholder="Payment Due Date" disabled/>
                                         </div>
                                     </div>
-                                    <div class='col-sm-3'>
-                                        <div class="form-group">
+                                    <div className='col-sm-3'>
+                                        <div className="form-group">
                                             <label>Total</label>
-                                            <input type="text" class="form-control" placeholder="Total" disabled/>
+                                            <input type="text" className="form-control" placeholder="Total" disabled/>
                                         </div>
                                     </div>
                                 </div>
@@ -47,23 +47,23 @@ class View extends React.Component {
                         </form>  
                     </div> 
                 </div>
-                <div class="col-12">
-                    <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Detailed View</h3>
+                <div className="col-12">
+                    <div className="card">
+                    <div className="card-header">
+                        <h3 className="card-title">Detailed View</h3>
 
-                        <div class="card-tools">
-                        <div class="input-group input-group-sm" style={{width: '150px'}}>
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search"/>
+                        <div className="card-tools">
+                        <div className="input-group input-group-sm" style={{width: '150px'}}>
+                            <input type="text" name="table_search" className="form-control float-right" placeholder="Search"/>
 
-                            <div class="input-group-append">
-                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                            <div className="input-group-append">
+                            <button type="submit" className="btn btn-default"><i className="fas fa-search"></i></button>
                             </div>
                         </div>
                         </div>
                     </div>
-                    <div class="card-body table-responsive p-0">
-                        <table class="table table-hover">
+                    <div className="card-body table-responsive p-0">
+                        <table className="table table-hover">
                         <thead>
                             <tr>
                             <th>ID</th>

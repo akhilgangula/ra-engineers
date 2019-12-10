@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
 class Home extends React.Component {
 
     render=()=> {
@@ -186,14 +186,14 @@ class Home extends React.Component {
 									</div>
 									<div className="card-footer clearfix">
 										<a href="#" className="btn btn-sm btn-info float-left">Place New Order</a>
-										<a href="#" className="btn btn-sm btn-secondary float-right">View All Orders</a>
+										<Link to="/allOrders" className="btn btn-sm btn-secondary float-right">View All Orders</Link>
 									</div>
 								</div>
 							</div>
 							<div className="col-md-4">
 								<div className="card">
 									<div className="card-header">
-										<h3 className="card-title">Recently Added Orders</h3>
+										<h3 className="card-title">Recent Activity</h3>
 										<div className="card-tools">
 											<button type="button" className="btn btn-tool" data-card-widget="collapse">
 												<i className="fas fa-minus"></i>
@@ -230,7 +230,7 @@ class Home extends React.Component {
 										</ul>
 									</div>
 									<div className="card-footer text-center">
-										<a href="#" className="uppercase">View All Orders</a>
+										<a href="#" className="uppercase">View All Activities</a>
 									</div>
 								</div>
 							</div>
