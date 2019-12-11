@@ -11,3 +11,7 @@
 .avatar {
     cursor: pointer;
 }
+
+.selectedAvator {
+    width: 150px;
+}

@@ -16,15 +16,26 @@ class CreateUser extends React.Component {
         firmName : '',
         emailID : '',
         address : '',
-        phoneNumber : ''
+        phoneNumber : '',
+        
     }
     constructor() {
         super()
         this.generatePassword = this.generatePassword.bind(this)
         this.formSubmit = this.formSubmit.bind(this)
         this.selectAvatar = this.selectAvatar.bind(this)
+        this.successHandler = this.successHandler.bind(this)
+        this.failureHandler = this.failureHandler.bind(this)
     }
 
+    failureHandler=()=> {
+
+    }
+
+    successHandler=()=>{
+        console.log('inhandler')
+        document.getElementById('alert-window').style.display = 'block'
+    }
    
     generatePassword = () => {
         var length = 6,
@@ -40,21 +51,28 @@ class CreateUser extends React.Component {
     formSubmit = (event) => {
         event.preventDefault();
         console.log("Submitting")
-        const headers = {
-            'Access-Control-Allow-Origin' : 'localhost:3000'
-        }
-        const data = {
-            username: 'Fred',
-            lastName: 'Flintstone'
-          };
-        axios.post('http://localhost:8080/users', data)
+        
+        axios.post('http://localhost:8080/users/', this.state)
           .then(function (response) {
-            console.log(response);
+              console.log(response.status)
+            if(response.status===201) {
+                    console.log(response.data.message.status)
+                if(response.data.message.status===1) {
+                    //Success
+                    console.log('inhandler')
+                    document.getElementById('alert-window').style.display = 'block'
+                } else {
+                    //failure
+                    this.failureHandler()
+                    
+                }
+            }
           })
           .catch(function (error) {
             console.log(error);
           });
     }
+
 
     selectAvatar = (event) => {
         this.setState({avatar: event.target.src})
@@ -64,6 +82,12 @@ class CreateUser extends React.Component {
     render() {
         return (
             <div>
+                <div id='alert-window' className="alert alert-success alert-dismissible" style={{display : 'none'}}>
+                  <button type="button" className="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i className="icon fas fa-check"></i> Alert!</h5>
+                  User created successfully and mail is triggered.
+                </div>
+            
                 <form onSubmit={this.formSubmit}>
                 <div className='row'>
                     <div className="col-md-6">
@@ -148,7 +172,10 @@ class CreateUser extends React.Component {
                                             <img src={avatar5} className="avatar" onClick={this.selectAvatar}/>
                                         </div>
                                     </div>
-                                    <div className='col-sm-3'>
+                                    <div className='col-sm-1' >
+                                        
+                                    </div>
+                                    <div className='col-sm-1 selectedAvator'>
                                         <img src={this.state.avatar} alt=""/>
                                     </div>
                                 </div>
