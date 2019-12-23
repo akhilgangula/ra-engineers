@@ -19,31 +19,31 @@ class RFQ extends React.Component {
         //All available items
         items: [
             {
-                id: 0,
+                id: 1,
                 src: product1,
                 alt: "Gypsum Lumps",
                 qty: 0,
             },
             {
-                id: 1,
+                id: 2,
                 src: product2,
                 alt: "Pop Powder",
                 qty: 0,
             },
             {
-                id: 2,
+                id: 3,
                 src: product3,
                 alt: "Raw Magnesite Lumps",
                 qty: 0,
             },
             {
-                id: 3,
+                id: 4,
                 src: product4,
                 alt: "Raw Magnesite powder",
                 qty: 0,
             },
             {
-                id: 4,
+                id: 5,
                 src: product5,
                 alt: "Raw Gypsum Powder",
                 qty: 0,
@@ -113,16 +113,17 @@ class RFQ extends React.Component {
         
         const findNdex = this.state.items.findIndex(item => item.id == this.state.id)
         
-        if(findNdex > -1){
+        /*if(findNdex > -1){
             const items = this.state.items;
             items[findNdex].qty+= this.state.qty;
             this.setState({
                 items
             })
-        }
-        if(this.state.items[findNdex].qty>0) {
-            
-        }
+        }*/
+        this.state.items.map(item => 
+            <CartItem key={item.id} id={item.id} header={"Item " + item.id} imgSrc={item.src} product={item.name} qty={item.qty + " tons"}
+                onDelete={this.removeItem} />
+            )
         
     }
     displayAllItems = () => {
@@ -142,7 +143,7 @@ class RFQ extends React.Component {
 
 
     renderCards = () => {
-        return this.state.items.filter(item => item.qty!==0).map(item => 
+        return this.state.items.map(item => 
             <CartItem key={item.id} id={item.id} header={"Item " + item.id} imgSrc={item.src} product={item.name} qty={item.qty + " tons"}
                 onDelete={this.removeItem} />
         )
@@ -191,7 +192,6 @@ class RFQ extends React.Component {
                                 <div id="cart-overview" className=" col-12 col-sm-6">
                                     {this.renderCards()}
                                 </div>
-
                             </div>
                         </div>
                     </div>
