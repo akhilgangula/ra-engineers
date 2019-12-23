@@ -12,7 +12,7 @@ class TopNavBar extends React.Component {
         var styles = document.body.className.split(' ')
         var name = "sidebar-collapse";
 				var index = styles.indexOf(name);
-				if (index == -1) {
+				if (index === -1) {
 					document.body.className += " " + name;
 				} else {
 					styles.splice(index, 1);
