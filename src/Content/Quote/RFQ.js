@@ -9,13 +9,13 @@ import CartItem from '../../CustomComponents/CartItem'
 import BigPic from '../../CustomComponents/BigPic'
 import Notification from '../../CustomComponents/Notification'
 import { MDBContainer } from "mdbreact";
-
+import Model from './../../CustomComponents/Model'
 class RFQ extends React.Component {
 
     state = {
         selectedProduct: null,
         selectedProductName: null,
-        id:1,
+        id: 1,
         //All available items
         items: [
             {
@@ -23,35 +23,40 @@ class RFQ extends React.Component {
                 src: product1,
                 alt: "Gypsum Lumps",
                 qty: 0,
+                inCart: false
             },
             {
                 id: 2,
                 src: product2,
                 alt: "Pop Powder",
                 qty: 0,
+                inCart: false
             },
             {
                 id: 3,
                 src: product3,
                 alt: "Raw Magnesite Lumps",
                 qty: 0,
+                inCart: false
             },
             {
                 id: 4,
                 src: product4,
                 alt: "Raw Magnesite powder",
                 qty: 0,
+                inCart: false
             },
             {
                 id: 5,
                 src: product5,
                 alt: "Raw Gypsum Powder",
                 qty: 0,
+                inCart: false
             },
         ],
         keys: 0, //for push notifications
         notification: [],
-        qty: 0,
+        model: null
     }
 
     constructor() {
@@ -60,15 +65,10 @@ class RFQ extends React.Component {
         this.addToCart = this.addToCart.bind(this);
         this.handleQty = this.handleQty.bind(this);
         this.pushNotification = this.pushNotification.bind(this);
-        this.rfq = this.rfq.bind(this);
         this.removeItem = this.removeItem.bind(this);
         this.displayAllItems = this.displayAllItems(this);
     }
 
-    rfq = () => {
-        console.log(this.state.items);
-
-    }
 
     removeItem = (id) => {
         var array = this.state.items;
@@ -90,10 +90,10 @@ class RFQ extends React.Component {
     }
 
     updateProduct(event) {
-        const {id,src, alt} = event.target
+        const { id, src, alt } = event.target
         this.setState({ selectedProduct: src })
         this.setState({ selectedProductName: alt })
-        this.setState({ id : id})
+        this.setState({ id: id })
     }
 
     pushNotification(message) {
@@ -107,24 +107,18 @@ class RFQ extends React.Component {
             this.pushNotification("Select a product to add to cart");
             return;
         }
-        //if (this.handleQty() === false) {
-        //    return;
-        //}
-        
-        const findNdex = this.state.items.findIndex(item => item.id == this.state.id)
-        
-        /*if(findNdex > -1){
-            const items = this.state.items;
-            items[findNdex].qty+= this.state.qty;
-            this.setState({
-                items
-            })
-        }*/
-        this.state.items.map(item => 
-            <CartItem key={item.id} id={item.id} header={"Item " + item.id} imgSrc={item.src} product={item.name} qty={item.qty + " tons"}
-                onDelete={this.removeItem} />
-            )
-        
+        const findIndex = this.state.items.findIndex(ele => ele.id == this.state.id);
+
+        if (findIndex > -1) {
+            if (this.state.items[findIndex].inCart === true) {
+                this.pushNotification("Item already added");
+                return;
+            }
+            let copyOfItems = this.state.items
+            copyOfItems[findIndex].inCart = true
+            this.setState({ items: copyOfItems })
+        }
+
     }
     displayAllItems = () => {
         return this.state.items.map(item =>
@@ -143,11 +137,28 @@ class RFQ extends React.Component {
 
 
     renderCards = () => {
-        return this.state.items.map(item => 
-            <CartItem key={item.id} id={item.id} header={"Item " + item.id} imgSrc={item.src} product={item.name} qty={item.qty + " tons"}
-                onDelete={this.removeItem} />
+        return this.state.items.filter(item => item.inCart === true).map(item =>
+            <CartItem key={item.id} id={item.id} header={"Item " + item.id} imgSrc={item.src} product={item.alt} qty={item.qty + " tons"}
+                onDelete={this.removeItem} onChange={this.updateQty} />
         )
     }
+
+    updateQty = (id, value) => {
+        console.log(id);
+        console.log(this.state.items[0].id == id);
+
+        const findIndex = this.state.items.findIndex(ele => ele.id == id);
+        console.log("index: " + findIndex);
+        if (findIndex < -1) {
+            return;
+        }
+
+        let copyOfItems = this.state.items
+        copyOfItems[findIndex].qty = value
+        this.setState({ items: copyOfItems }, () => console.log(this.state.items)
+        )
+    }
+
     render() {
         return (
             <div>
@@ -162,12 +173,14 @@ class RFQ extends React.Component {
                 >
                     {this.state.notification}
                 </MDBContainer>
+
                 <section className="content">
-                    <div className="card card-solid">
+                    <div className="card card-solid ">
                         <div className="card-body">
                             <div className="row">
 
                                 <div className="col-12 col-sm-6">
+                                    <h3>Select from below</h3>
                                     <div className="col-12 product-image-thumbs">
                                         {this.displayAllItems}
                                     </div>
@@ -179,8 +192,13 @@ class RFQ extends React.Component {
                                         <hr />
                                     </div>
                                     <div className='row'>
-                                        {this.actionButtons(this.addToCart, 'fas fa-shopping-cart', 'Add to Cart')}
-                                        {this.actionButtons(this.rfq, 'fas fa-paper-plane', 'Request for Quote')}
+                                        <div className='col-sm-2'>
+                                            {this.actionButtons(this.addToCart, 'fas fa-shopping-cart', 'Add to Cart')}
+                                        </div>
+                                        <div className='col-sm-3'>
+                                            
+                                            <Model data={this.state.items} />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -189,8 +207,10 @@ class RFQ extends React.Component {
                                 <div className=" col-12 col-sm-6">
                                     <BigPic key={this.state.id} src={this.state.selectedProduct} />
                                 </div>
-                                <div id="cart-overview" className=" col-12 col-sm-6">
-                                    {this.renderCards()}
+                                <div className="col-12 col-sm-6 ">
+                                    <div id="cart-overview">
+                                        {this.renderCards()}
+                                    </div>
                                 </div>
                             </div>
                         </div>

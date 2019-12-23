@@ -4,8 +4,8 @@ import NumberField from './NumberField'
 class CartItem extends React.Component {
 
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.removeCard = this.removeCard.bind(this)
     }
 
@@ -13,13 +13,16 @@ class CartItem extends React.Component {
         this.props.onDelete(this.props.id)
     }
 
+    updateQty = (value) => {
+        this.props.onChange(this.props.id,value);
+    }
 
     render() {
         return (
             <div className="col-md-12">
                 <div className="card card-outline card-success" id={this.props.id}>
                     <div className="card-header">
-                        <h3 className="card-title">{this.props.header}</h3>
+                        <h3 className="card-title"></h3>
                         <div className="card-tools">
                             <button type="button" className="btn btn-tool" onClick={this.removeCard}>
                                 <i className="far fa-trash-alt"></i>
@@ -43,10 +46,10 @@ class CartItem extends React.Component {
                             </div>
                             <div className='col-sm-4'>
                                 <div className="heading">
-                                    Quantity
+                                    Quantity (in tons)
                                 </div>
                                 <div className="cart-description-content">
-                                    <NumberField value={0} />
+                                    <NumberField value={0} onChange={this.updateQty}/>
                                 </div>
                             </div>
                         </div>

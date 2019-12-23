@@ -15,7 +15,7 @@ class NumberField extends Component {
             if (value < 0) {
                 return;
             }
-            this.setState({ value: value }, () => this.props.onChange(this.props.value, this.state.value))
+            this.setState({ value: value }, () => this.props.onChange(this.state.value))
         }
         
     }
@@ -24,12 +24,11 @@ class NumberField extends Component {
     decrease = () => {
         if (this.state.value === 0)
             return;
-        this.setState({ value: this.state.value - 1 });
+        this.setState({ value: this.state.value - 1 },() => this.props.onChange(this.state.value));
     }
 
     increase = () => {
-
-        this.setState({ value: this.state.value + 1 });
+        this.setState({ value: this.state.value + 1 },() => this.props.onChange(this.state.value));
     }
 
     render() {
