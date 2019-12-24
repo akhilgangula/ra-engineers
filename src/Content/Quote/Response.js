@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import './Response.css'
-import Modal from '../../CustomComponents/Modal'
+import Modal from './Modal'
 
 class Response extends React.Component {
 
@@ -38,7 +38,6 @@ class Response extends React.Component {
                 ],
 
             },
-            
 
         ],
         show: false,
