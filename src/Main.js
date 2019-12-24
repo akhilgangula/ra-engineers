@@ -1,7 +1,7 @@
 import React from "react";
-import { Route, Link, BrowserRouter as Router,Switch  } from 'react-router-dom'
-import Logo from './Navigation/Logo'
+import { BrowserRouter as Router  } from 'react-router-dom'
 import ContentArea from './Content/'
+import Sidebar from "./Navigation/sidebar";
 class Main extends React.Component {
 
     render() {
@@ -9,7 +9,7 @@ class Main extends React.Component {
             <div>
                 <Router>
                 <div id="top-nav-bar"></div>
-                    <Logo/>
+                    <Sidebar/>
                 <div id="logo-section">
                 </div>
                 <div className="content-wrapper">

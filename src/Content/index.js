@@ -11,6 +11,7 @@ import EditBilling from './Billing/edit'
 import CreateUser from './UserMgmt/create'
 import CreateRFQ from './Quote/RFQ'
 import Response from './Quote/Response'
+import CreateOrder from './Orders/Create';
 class ContentArea extends React.Component {
 
     render=()=> {
@@ -26,6 +27,7 @@ class ContentArea extends React.Component {
                     <Route path="/customers/create" component={CreateUser} />
                     <Route path="/quote/rfq" component={CreateRFQ} />
                     <Route path="/quote/response" component={Response} />
+                    <Route path="/order/create" component={CreateOrder} />
                     <Route component={PageNotFound} />
                     
                 </Switch>

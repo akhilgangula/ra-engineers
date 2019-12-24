@@ -8,7 +8,6 @@ class TopNavBar extends React.Component {
     }
 
     handleDrawer = () => {
-        console.log("called")
         var styles = document.body.className.split(' ')
         var name = "sidebar-collapse";
 				var index = styles.indexOf(name);
