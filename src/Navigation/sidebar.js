@@ -76,6 +76,7 @@ class Sidebar extends React.Component {
 								</List>
 							</ListItem>
 							<ListItem name="Request For Quote" styleClass="nav-link" iconStyle="fas fa-lock" isTreeView='false' hyperlink="/quote/rfq"/>
+							<ListItem name="View Request" styleClass="nav-link" iconStyle="fas fa-lock" isTreeView='false' hyperlink="/quote/response"/>
 						</ul>
 					</nav>
 				</div>
