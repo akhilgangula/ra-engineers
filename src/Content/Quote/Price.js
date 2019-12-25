@@ -54,10 +54,10 @@ class PopulateData extends React.Component {
                     <Accordion.Toggle as={Card.Header} eventKey="0">
                         <Row>
                             <Col sm={2}>
-                                {this.props.data.requestID.toUpperCase()}  
+                                {this.props.data.requestID.toUpperCase()}
                             </Col>
                             <Col sm={1}>
-                                <i className="fas fa-chevron-circle-left"></i>  
+                                <i className="fas fa-chevron-circle-left"></i>
                             </Col>
                             <Col>
                                 {this.props.data.customerId.toUpperCase()}
@@ -77,11 +77,11 @@ class PopulateData extends React.Component {
                                         <Card.Title>Admin tile</Card.Title>
                                     </Card.Header>
                                     <Card.Body>
-                                        <Card.Subtitle className="mb-2 text-muted">Overview</Card.Subtitle>
                                         <ListGroup>
-                                            <ListGroup.Item>
-                                                Price : <Form.Control type="number" placeholder="Price request here" />
-                                            </ListGroup.Item>
+                                            <Form.Group>
+                                                <Form.Label>Price : </Form.Label>
+                                                <Form.Control type="number" placeholder="Quote the price per unit" />
+                                            </Form.Group>
                                             <Form.Group controlId="exampleForm.ControlSelect1">
                                                 <Form.Label>Accept/Reject</Form.Label>
                                                 <Form.Control as="select">
@@ -89,9 +89,10 @@ class PopulateData extends React.Component {
                                                     <option>Reject</option>
                                                 </Form.Control>
                                             </Form.Group>
-                                            <ListGroup.Item>
-                                                Comments :  <Form.Control as="textarea" rows="1" />
-                                            </ListGroup.Item>
+                                            <Form.Group>
+                                                <Form.Label>Comments : </Form.Label>
+                                                <Form.Control as="textarea" rows="1" />
+                                            </Form.Group>
                                         </ListGroup>
                                     </Card.Body>
                                     <Card.Footer>
