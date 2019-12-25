@@ -9,9 +9,10 @@ import { Route,Switch } from 'react-router-dom'
 import PageNotFound from './404NotFound'
 import EditBilling from './Billing/edit'
 import CreateUser from './UserMgmt/create'
-import CreateRFQ from './Quote/RFQ'
 import Response from './Quote/Response'
 import CreateOrder from './Orders/Create';
+import CreateRequest from './Quote/Request'
+import Price from './Quote/Price';
 class ContentArea extends React.Component {
 
     render=()=> {
@@ -25,9 +26,10 @@ class ContentArea extends React.Component {
                     <Route path="/orderStatus" component={OrderStatus} />
                     <Route path="/billing/edit" component={EditBilling} />
                     <Route path="/customers/create" component={CreateUser} />
-                    <Route path="/quote/rfq" component={CreateRFQ} />
                     <Route path="/quote/response" component={Response} />
                     <Route path="/order/create" component={CreateOrder} />
+                    <Route path="/quote/create" component={CreateRequest} />
+                    <Route path="/quote/price" component={Price} />
                     <Route component={PageNotFound} />
                     
                 </Switch>

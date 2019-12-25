@@ -4,29 +4,30 @@ import Modal from 'react-bootstrap/Modal'
 import Card from 'react-bootstrap/Card'
 import Table from "react-bootstrap/Table";
 import { Link } from 'react-router-dom'
+
 const PopulateRequest = (obj) => {
     return obj.data.request.map((request, index) =>
-        <Card key={index}>
-            <Card.Header>
-                <Card.Title>Product Card - {index+1}</Card.Title>
-            </Card.Header>
-            <Card.Body>
-                <Card.Subtitle>
-                    Detailed Overview :
+                <Card key={index}>
+                    <Card.Header>
+                        <Card.Title>Product Card - {index + 1}</Card.Title>
+                    </Card.Header>
+                    <Card.Body>
+                        <Card.Subtitle>
+                            Detailed Overview :
                 </Card.Subtitle>
-                <Table>
-                    <tbody>
-                        {
-                            Object.keys(request).map((entry, entryIndex) => <GetEntry key={entryIndex + "" + index} entryId={entryIndex + "" + index} title={entry} value={request[entry]} />)
-                        }
-                    </tbody>
-                </Table>
-            </Card.Body>
-            <Card.Footer>
-                <Card.Link href="#">Reject Price</Card.Link>
-                <Card.Link href="#">Place Order</Card.Link>
-            </Card.Footer>
-        </Card>
+                        <Table>
+                            <tbody>
+                                {
+                                    Object.keys(request).map((entry, entryIndex) => <GetEntry key={entryIndex + "" + index} entryId={entryIndex + "" + index} title={entry} value={request[entry]} />)
+                                }
+                            </tbody>
+                        </Table>
+                    </Card.Body>
+                    <Card.Footer>
+                        <Card.Link href="#">Reject Price</Card.Link>
+                        <Card.Link href="#">Place Order</Card.Link>
+                    </Card.Footer>
+                </Card>
     )
 }
 

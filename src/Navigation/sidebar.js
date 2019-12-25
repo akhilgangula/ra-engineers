@@ -83,9 +83,11 @@ class Sidebar extends React.Component {
 									<ListItem name="Manage user" styleClass="nav-link" iconStyle="fas fa-users-cog" isTreeView='false' hyperlink="/customers/manage" />
 								</List>
 							</ListItem>
-							<ListItem name="Request For Quote" styleClass="nav-link" iconStyle="fas fa-lock" isTreeView='false' hyperlink="/quote/rfq" />
+							
+							<ListItem name="Request For Quote" styleClass="nav-link" iconStyle="fas fa-lock" isTreeView='false' hyperlink="/quote/create" />
 							<ListItem name="View Request" styleClass="nav-link" iconStyle="fas fa-lock" isTreeView='false' hyperlink="/quote/response" />
 							<ListItem name="Place Order" styleClass="nav-link" iconStyle="fas fa-lock" isTreeView='false' hyperlink="/order/create" />
+							<ListItem name="Quote Request" styleClass="nav-link" iconStyle="fas fa-lock" isTreeView='false' hyperlink="/quote/price" />
 						</ul>
 					</nav>
 				</div>
