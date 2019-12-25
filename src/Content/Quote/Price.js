@@ -49,7 +49,7 @@ class Price extends React.Component {
 class PopulateData extends React.Component {
     render() {
         return (
-            <Accordion defaultActiveKey="0">
+            <Accordion>
                 <Card>
                     <Accordion.Toggle as={Card.Header} eventKey="0">
                         <Row>
