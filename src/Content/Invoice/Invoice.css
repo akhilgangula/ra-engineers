@@ -1,6 +1,16 @@
+@media print {
+    .invoice-header {
+        color: black !important;
+        -webkit-print-color-adjust: exact;
+        background-color: #191962 !important
+    }
+}
+
+
+
 .invoice-header {
     padding: 25px;
-    background-color: rgb(25, 25, 98);
+    background-color: #191962;
     color: white;
 }
 
