@@ -1,0 +1,24 @@
+.invoice-header {
+    padding: 25px;
+    background-color: rgb(25, 25, 98);
+    color: white;
+}
+
+.invoice-color {
+    color : rgb(25, 25, 98);
+    font-weight: bold;
+}
+
+.divider {
+    border-width: 0.1em;
+    border-color: rgb(25, 25, 98);
+}
+
+.invoice-right {
+    text-align: right;
+}
+
+.invoice-subtitles {
+    font-size: 14px;
+}
+

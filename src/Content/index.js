@@ -9,7 +9,7 @@ import { Route,Switch } from 'react-router-dom'
 import PageNotFound from './404NotFound'
 import EditBilling from './Billing/edit'
 import CreateUser from './UserMgmt/create'
-import Response from './Quote/Response'
+import GenerateInvoice from './Invoice/create'
 import CreateOrder from './Orders/Create';
 import CreateRequest from './Quote/Request'
 import Price from './Quote/Price';
@@ -26,10 +26,11 @@ class ContentArea extends React.Component {
                     <Route path="/orderStatus" component={OrderStatus} />
                     <Route path="/billing/edit" component={EditBilling} />
                     <Route path="/customers/create" component={CreateUser} />
-                    <Route path="/quote/response" component={Response} />
+                    
                     <Route path="/order/create" component={CreateOrder} />
                     <Route path="/quote/create" component={CreateRequest} />
                     <Route path="/quote/price" component={Price} />
+                    <Route path="/invoice/create" component={GenerateInvoice} />
                     <Route component={PageNotFound} />
                     
                 </Switch>
