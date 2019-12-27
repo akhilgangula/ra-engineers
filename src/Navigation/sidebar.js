@@ -69,7 +69,7 @@ class Sidebar extends React.Component {
 							</ListItem>
 							<NavHeader styleClass="nav-header" name="Manage Orders" />
 							
-							<ListItem name="View All Orders" styleClass="nav-link" iconStyle="fas fa-binoculars" isTreeView='false' hyperlink="/allOrders" />
+							
 							<ListItem name="View All Orders" styleClass="nav-link" iconStyle="fas fa-binoculars" isTreeView='false' hyperlink="/order/view" />
 							
 							<ListItem name="Request For Quote" styleClass="nav-link" iconStyle="fas fa-lock" isTreeView='false' hyperlink="/quote/create" />
