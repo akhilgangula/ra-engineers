@@ -36,7 +36,7 @@ class Sidebar extends React.Component {
 					<img src={dashLogo} alt="AdminLTE Logo" className="brand-image img-circle elevation-3" style={{ opacity: .8 }} />
 					<span className="brand-text font-weight-light">RA Dashboard</span>
 				</a>
-				
+
 
 				<div className="sidebar">
 					<div className="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -68,27 +68,28 @@ class Sidebar extends React.Component {
 								</List>
 							</ListItem>
 							<NavHeader styleClass="nav-header" name="Manage Orders" />
+							
 							<ListItem name="View All Orders" styleClass="nav-link" iconStyle="fas fa-binoculars" isTreeView='false' hyperlink="/allOrders" />
-							<ListItem name="Update tracking status" styleClass="nav-link" iconStyle="fas fa-map-marker-alt" isTreeView='false' hyperlink="/orderStatus" />
+							<ListItem name="View All Orders" styleClass="nav-link" iconStyle="fas fa-binoculars" isTreeView='false' hyperlink="/order/view" />
+							
+							<ListItem name="Request For Quote" styleClass="nav-link" iconStyle="fas fa-lock" isTreeView='false' hyperlink="/quote/create" />
+							<ListItem name="Quotation" styleClass="nav-link" iconStyle="fas fa-lock" isTreeView='false' hyperlink="/quote/price" />
+							<ListItem name="Place Order" styleClass="nav-link" iconStyle="fas fa-lock" isTreeView='false' hyperlink="/order/create" />
+							
 							<ListItem name="Billing" styleClass="nav-link" iconStyle="fas fa-file-invoice" isTreeView='true' hyperlink="#">
 								<List>
-									<ListItem name="View All Bills" styleClass="nav-link" iconStyle="fas fa-file-invoice-dollar" isTreeView='false' hyperlink="/billing/view" />
-									<ListItem name="Create new bill" styleClass="nav-link navigatable" iconStyle="fas fa-receipt" isTreeView='false' hyperlink="/billing/createNew" />
-									<ListItem name="Edit bill" styleClass="nav-link" iconStyle="fas fa-file-alt" isTreeView='false' hyperlink="/billing/edit" />
+									<ListItem name="Generate Invoice" styleClass="nav-link navigatable" iconStyle="fas fa-receipt" isTreeView='false' hyperlink="/invoice/create" />
+									<ListItem name="View Invoice" styleClass="nav-link navigatable" iconStyle="fas fa-receipt" isTreeView='false' hyperlink="/invoice/view" />
 								</List>
 							</ListItem>
+
+
 							<ListItem name="Manage Users" styleClass="nav-link" iconStyle="fas fa-users" isTreeView='true' hyperlink='#'>
 								<List>
 									<ListItem name="Create a user" styleClass="nav-link" iconStyle="fas fa-user-plus" isTreeView='false' hyperlink="/customers/create" />
 									<ListItem name="Manage user" styleClass="nav-link" iconStyle="fas fa-users-cog" isTreeView='false' hyperlink="/customers/manage" />
 								</List>
 							</ListItem>
-							
-							<ListItem name="Request For Quote" styleClass="nav-link" iconStyle="fas fa-lock" isTreeView='false' hyperlink="/quote/create" />
-							<ListItem name="Quote Request" styleClass="nav-link" iconStyle="fas fa-lock" isTreeView='false' hyperlink="/quote/price" />
-							
-							<ListItem name="Place Order" styleClass="nav-link" iconStyle="fas fa-lock" isTreeView='false' hyperlink="/order/create" />
-							<ListItem name="Generate Invoice" styleClass="nav-link navigatable" iconStyle="fas fa-receipt" isTreeView='false' hyperlink="/invoice/create" />
 						</ul>
 					</nav>
 				</div>

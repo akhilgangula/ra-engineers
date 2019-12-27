@@ -12,6 +12,7 @@ class Create extends React.Component {
         clientId: "CUST-3563456",
         getNow: false, //turn this off
         generatePage: false,
+        printButton: null,
         invoiceId: "INV-" + GenerateID(),
         data: {
             Name: "Akhil",
@@ -30,6 +31,7 @@ class Create extends React.Component {
             total: NumberConvertor(273000), //qty*price*1000,
 
         },
+        
     }
 
     render() {
@@ -61,20 +63,28 @@ class Create extends React.Component {
                     </Col>
                     <Col sm={4}>
                         <PopulateData description={this.state.requestId} header="Price Card" data={this.compileData(this.state.getNow, this.state.requestId, "Price")} />
-                        <Button variant="outline-success" onClick={() => this.setState({ generatePage: true })}>Generate</Button>
+                        <Button variant="outline-success" onClick={() => this.generatePage()}>Generate</Button>
                     </Col>
                 </Row>
-                <div>
+                <Row>
+                    <Invoice ref={el => (this.componentRef = el)} show={this.state.generatePage} data={this.state.data} invoiceId={this.state.invoiceId} />
+                    </Row>
+                    <Row>
+                        <Col md={{ span: 2, offset: 10 }}>
                     <ReactToPrint
-                        trigger={() => <a href="#">Print this out!</a>}
+                        trigger={() => <a href="#" style={{textAlign:'center'}}>{this.state.printButton}</a>}
                         content={() => this.componentRef}
                     />
+                    </Col>
                     
-                    <Invoice ref={el => (this.componentRef = el)} show={this.state.generatePage} data={this.state.data} invoiceId={this.state.invoiceId} />
-                    
-                </div>
+                </Row>
             </Container>
         )
+    }
+
+    generatePage() {
+        this.setState({ generatePage: true })
+        this.setState({printButton: "Print/Save as PDF Invoice"})
     }
     
     compileData = (compute, requestId, collection) => {
@@ -119,6 +129,7 @@ class Create extends React.Component {
             //don't generate if entry already present
             //assuming match is found
             this.setState({ getNow: true })
+            
         }
     }
 }

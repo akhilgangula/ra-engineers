@@ -1,6 +1,7 @@
 
 import * as Constants from './Constants';
-
+import { Badge } from 'react-bootstrap';
+import React from 'react'
 export const GetVariant = (status) => {
     switch (status.toUpperCase()) {
         case Constants.REQUEST_REJECTED:
@@ -28,3 +29,4 @@ export const GetVariant = (status) => {
     }
 }
 
+export const GetBadge=(obj) => <Badge variant={GetVariant(obj.status)}>{obj.status.toUpperCase()}</Badge>
