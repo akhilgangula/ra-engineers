@@ -1,6 +1,5 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
 import product1 from './../../assets/img/Gypsum Lumps.jpeg'
 import product2 from './../../assets/img/Pop Powder.jpeg'
 import product3 from './../../assets/img/Raw Magnesite Lumps.jpeg'

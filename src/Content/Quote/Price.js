@@ -1,45 +1,26 @@
 import React from 'react'
-import { Container, Accordion, Card, Tab, Tabs, ListGroup, Row, Col, Form, Button } from 'react-bootstrap'
-
+import { Container, Accordion, Card, ListGroup, Row, Col, Form, Button } from 'react-bootstrap'
+import axios from './../../lib/connection'
 class Price extends React.Component {
 
 
     state = {
-        data: [
-            {
-                id: 1,
-                productId: 1,
-                product: "GYPSUM",
-                type: "LUMPS",
-                requestID: "request-123",
-                qty: 33,
-                size: "MEDIUM",
-                port: "NAVI MUMBAI",
-                customerId: "CUST-456",
-                comments: "This is a dummy entry for comments section",
-                status: "REQUESTED"
-            },
-            {
-                id: 2,
-                productId: 2,
-                product: "MAGNESITE",
-                type: "POWDER",
-                requestID: "request-098",
-                qty: 50,
-                size: "NA",
-                port: "KAKINADA",
-                customerId: "CUST-890",
-                comments: null,
-                status: "QUOTED"
-            },
-        ]
+        data: [],
+    }
+
+    componentDidMount() {
+        axios.get('/quote/price').then(result => {
+            this.setState({ data: result.data })
+        }).catch(err => console.log(err));
     }
 
     render() {
         return (
             <div>
                 <Container>
-                    {this.state.data.map((item, index) => <PopulateData key={index} data={item} />)}
+                    {
+                        this.state.data.map((item, index) => <PopulateData key={index} data={item} />)
+                    }
                 </Container>
             </div>
         )
@@ -47,20 +28,42 @@ class Price extends React.Component {
 }
 
 class PopulateData extends React.Component {
+    state = {
+        validated: false,
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        this.setState({ validated: true });
+        if (!event.currentTarget.checkValidity()) {
+            //if failed
+            return;
+        }
+        const quote = {
+            requestId: this.props.data.requestId,
+            price: this.refs.priceRef.value,
+            action: this.refs.actionRef.value,
+            notes: this.refs.notesRef.value,
+        }
+        axios.post('quote/price', quote).catch(err => console.log(err));
+        
+    }
+
     render() {
         return (
             <Accordion>
                 <Card>
                     <Accordion.Toggle as={Card.Header} eventKey="0">
                         <Row>
-                            <Col sm={2}>
-                                {this.props.data.requestID.toUpperCase()}
+                            <Col sm={3}>
+                                {this.props.data.requestId.toUpperCase()}
                             </Col>
                             <Col sm={1}>
                                 <i className="fas fa-chevron-circle-left"></i>
                             </Col>
                             <Col>
-                                {this.props.data.customerId.toUpperCase()}
+                                {this.props.data.custId.toUpperCase()}
                             </Col>
                             <Col md={{ span: 2, offset: 2 }}>
                                 {this.props.data.status.toUpperCase()}
@@ -73,31 +76,36 @@ class PopulateData extends React.Component {
                                 <GetCard header="Product tile" details={this.constructProductData(this.props.data)} />
                                 <GetCard header="Requirement tile" details={this.constructRequestData(this.props.data)} />
                                 <Card>
-                                    <Card.Header>
-                                        <Card.Title>Admin tile</Card.Title>
-                                    </Card.Header>
-                                    <Card.Body>
-                                        <ListGroup>
-                                            <Form.Group>
-                                                <Form.Label>Price : </Form.Label>
-                                                <Form.Control type="number" placeholder="Quote the price per unit" />
-                                            </Form.Group>
-                                            <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label>Accept/Reject</Form.Label>
-                                                <Form.Control as="select">
-                                                    <option>Accept</option>
-                                                    <option>Reject</option>
-                                                </Form.Control>
-                                            </Form.Group>
-                                            <Form.Group>
-                                                <Form.Label>Comments : </Form.Label>
-                                                <Form.Control as="textarea" rows="1" />
-                                            </Form.Group>
-                                        </ListGroup>
-                                    </Card.Body>
-                                    <Card.Footer>
-                                        <Button variant="outline-success">Save</Button>
-                                    </Card.Footer>
+                                    <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
+                                        <Card.Header>
+                                            <Card.Title>Admin tile</Card.Title>
+                                        </Card.Header>
+                                        <Card.Body>
+                                            <ListGroup>
+                                                <Form.Group>
+                                                    <Form.Label>Price : </Form.Label>
+                                                    <Form.Control ref={"priceRef"} step="any" type="number" required placeholder="Quote the price per unit" />
+                                                    <Form.Control.Feedback type="invalid">
+                                                        Invalid quotation(0 if rejecting request).
+                                                    </Form.Control.Feedback>
+                                                </Form.Group>
+                                                <Form.Group controlId="exampleForm.ControlSelect1">
+                                                    <Form.Label>Accept/Reject</Form.Label>
+                                                    <Form.Control ref={"actionRef"} as="select">
+                                                        <option>Accept</option>
+                                                        <option>Reject</option>
+                                                    </Form.Control>
+                                                </Form.Group>
+                                                <Form.Group>
+                                                    <Form.Label>Comments : </Form.Label>
+                                                    <Form.Control required ref={"notesRef"} as="textarea" rows="1" placeholder="Optional (ETA)" />
+                                                </Form.Group>
+                                            </ListGroup>
+                                        </Card.Body>
+                                        <Card.Footer>
+                                            <Button type='submit' variant="outline-success">Save</Button>
+                                        </Card.Footer>
+                                    </Form>
                                 </Card>
                             </Row>
                         </Card.Body>
@@ -109,18 +117,18 @@ class PopulateData extends React.Component {
 
     constructProductData = (data) => {
         return [
-            { "Product Name": data.product },
+            { "Product Name": data.name },
             { "Product Type": data.type }
         ]
     }
 
     constructRequestData = (data) => {
         return [
-            { "Request ID": data.requestID },
+            { "Request ID": data.requestId },
             { "Quantity": data.qty },
             { "Size": data.size },
             { "Port": data.port },
-            { "Comments": data.comments },
+            { "Comments": data.notes },
         ]
     }
 }
@@ -129,10 +137,6 @@ class GetCard extends React.Component {
     render() {
         return (
             <Col sm={4}>
-                {
-                    console.log(this.props.details)
-
-                }
                 <Card style={{ width: '18rem' }}>
                     <Card.Header>
                         <Card.Title>{this.props.header}</Card.Title>

@@ -12,7 +12,7 @@ export const GetVariant = (status) => {
             return Constants.WARNING
         case Constants.ORDERED:
             return Constants.WARNING
-        case Constants.ORDER_REJECED:
+        case Constants.ORDER_REJECTED:
             return Constants.DANGER
         case Constants.ORDER_ACKNOWLEGDED:
             return Constants.DARK

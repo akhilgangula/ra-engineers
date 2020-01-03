@@ -2,13 +2,15 @@ import React from "react";
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Card from 'react-bootstrap/Card'
-import { ListGroup, ListGroupItem, Row, Col, Container, Badge } from "react-bootstrap";
+import { ListGroup, ListGroupItem, Row, Col, Badge, Container } from "react-bootstrap";
 import { GetVariant } from "../../lib/Styling";
 import * as Constants from '../../lib/Constants'
-const ommit = ['status', 'id']
+import axios from './../../lib/connection'
+const ommit = ['_id', 'status', 'id', "eta", 'custId', 'pid']
 
-const PopulateRequest = (obj) =>
+const PopulateRequest = ({ data, close }) =>
     <Card>
+
         <Card.Body>
             <Card.Title>Note:</Card.Title>
             <Card.Text>
@@ -21,30 +23,45 @@ const PopulateRequest = (obj) =>
             <ListGroupItem><b>Overview</b></ListGroupItem>
             <ListGroupItem><Row>
                 <Col sm={3}>
-                    {"STATUS"}</Col><Col><Badge variant={GetVariant(obj.data["status"])}>{obj.data["status"].toString().toUpperCase()}</Badge>
+                    <b>{"STATUS"}</b></Col><Col><Badge variant={GetVariant(data["status"])}>{data["status"].toString().toUpperCase()}</Badge>
                 </Col>
             </Row>
             </ListGroupItem>
-            <PopulateData data={obj.data} />
+            <Container>
+                <Row>
+                    <PopulateData data={data} />
+                </Row>
+            </Container>
         </ListGroup>
         <Card.Body>
-            <Button variant={Constants.LINK}>Reject Price</Button>
-            <Button variant={Constants.LINK}>Place Order</Button>
+            <Button variant={Constants.LINK} onClick={() => { data.status = route(data, false); close() }}>Reject Price</Button>
+            <Button variant={Constants.LINK} onClick={() => { data.status = route(data, true); close() }}>Place Order</Button>
         </Card.Body>
     </Card>
 
-const PopulateData = (obj) =>
-    Object.keys(obj.data).filter(entry => !ommit.includes(entry)).map((entry, index) =>
-        <ListGroupItem key={index} >
-            <Row>
-                <Col sm={3}>
-                    {entry.toUpperCase()}
+const route = (data, action) => {
+    const order = {
+        requestId: data.requestId,
+        action: action,
+    }
+    axios.post('/order/create', order).catch(err => console.log(err))
+    return action ? 'ORDERED' : 'PRICE REJECTED';
+}
+
+const PopulateData = ({data}) =>
+    Object.keys(data).filter(entry => !ommit.includes(entry)).map((entry, index) =>
+
+        <Col key={index} sm={6}>
+            <Row style={{ paddingTop: '15px' }}>
+                <Col sm={4}>
+                    <b>{entry.toUpperCase()}</b>
                 </Col>
-                <Col>
-                    {(obj.data[entry]).toString().toUpperCase()}
+                <Col sm={8}>
+                    {(data[entry]).toString().toUpperCase()}
                 </Col>
             </Row>
-        </ListGroupItem>)
+        </Col>
+    )
 
 class ModalDialog extends React.Component {
 
@@ -72,6 +89,7 @@ class ModalDialog extends React.Component {
         return (
             <Modal
                 show={this.state.show}
+                size="lg"
                 onHide={() => this.close()}
                 dialogClassName="modal-90w"
                 aria-labelledby="example-modal-sizes-title-lg"
@@ -82,7 +100,7 @@ class ModalDialog extends React.Component {
                         </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <PopulateRequest data={this.props.data} />
+                    <PopulateRequest data={this.props.data} close={this.close} />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="light" onClick={this.close} >Print</Button>

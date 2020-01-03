@@ -18,7 +18,7 @@ class Sidebar extends React.Component {
 				var name = "menu-open";
 				var arr = parent.className.split(" ");
 				var index = arr.indexOf(name);
-				if (index == -1) {
+				if (index === -1) {
 					parent.className += " " + name;
 				} else {
 					arr.splice(index, 1);
@@ -41,7 +41,7 @@ class Sidebar extends React.Component {
 				<div className="sidebar">
 					<div className="user-panel mt-3 pb-3 mb-3 d-flex">
 						<div className="image">
-							<img src={profilePic} className="img-circle elevation-2" alt="User Image" />
+							<img src={profilePic} alt={'Profile Pic'} className="img-circle elevation-2" />
 						</div>
 						<div className="info">
 							<a href="#" className="d-block">Admin</a>

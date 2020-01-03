@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Button, Form, Col, Row, InputGroup, Card, ListGroup } from 'react-bootstrap'
+import { Container, Button, Form, Col, Row, InputGroup, Card } from 'react-bootstrap'
 import { GenerateID, NumberConvertor } from './../../lib/Utils'
 import Invoice from "./Invoice";
 import ReactToPrint from 'react-to-print';
@@ -122,7 +122,7 @@ class Create extends React.Component {
 
 
     validateReqId = (event) => {
-        if (event.target.value != "") {
+        if (event.target.value !== "") {
             //search db with startswith
 
 
@@ -140,7 +140,7 @@ class PopulateData extends React.Component {
     render() {
 
 
-        if (this.props.data == "") {
+        if (this.props.data === "") {
             return (<div></div>)
         }
         return (

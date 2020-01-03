@@ -5,7 +5,7 @@ import Modal from './Modal'
 import { Badge, Jumbotron, Alert } from 'react-bootstrap'
 import { GetVariant } from './../../lib/Styling'
 import * as Constants from './../../lib/Constants'
-
+import axios from './../../lib/connection'
 const blocked_status = [
     Constants.ORDERED,
     Constants.ORDER_ACKNOWLEGDED,
@@ -17,17 +17,13 @@ const blocked_status = [
 
 class PopulateData extends React.Component {
 
-    state = {
-        data: this.props.obj,
-    }
-
     render = () => {
 
-        return this.state.data.map(item =>
-            <tr key={item.id} className="text-center" onClick={() => this.handleModal(item.id)}>
+        return this.props.obj.map((item,index) =>
+            <tr key={index} className="text-center" onClick={() => this.handleModal(index)}>
                 <td>{item.id}</td>
                 <td>{item.requestId}</td>
-                <td>{item.product}</td>
+                <td>{item.name}</td>
                 <td>{item.type}</td>
                 <td>{item.qty}</td>
                 <td>{item.price}</td>
@@ -41,70 +37,29 @@ class PopulateData extends React.Component {
 
 
     handleModal = (value) => {
+    
+        
         //If order is placed, do't open models
-        if(blocked_status.includes(this.props.obj[value - 1].status.toString().toUpperCase())) {
+        if(blocked_status.includes(this.props.obj[value].status.toString().toUpperCase())) {
             alert("Order is already placed, to manage orders, please Navigate to 'View My Orders'")
             return;
         }
         this.props.onModalOpen(true)
-        this.props.setData(this.props.obj[value - 1])
+        this.props.setData(this.props.obj[value])
     }
 }
 
 class Create extends React.Component {
     state = {
-        data: [
-            {
-                id: 1,
-                requestId: 'request-123',
-                product: 'Gypsum',
-                type: 'LUMPS',
-                qty: 100,
-                price: 2.73,
-                status: 'Priced',
-                size: 'small',
-                port: 'self',
-                comment: 'Priced',
-                date: 'Feb-Mar 2020'
-            },
-            {
-                id: 2,
-                requestId: 'request-456',
-                product: 'Gypsum',
-                type: 'POWDER',
-                qty: 100,
-                price: 0,
-                status: 'Request Rejected',
-                port: 'mumbai',
-                comment: 'Out of Stock',
-                date: '12/01/2020'
-            },
-            {
-                id: 3,
-                requestId: 'request-908',
-                product: 'Magnesite',
-                type: 'POWDER',
-                qty: 70,
-                price: 5.15,
-                status: 'ORDERED',
-                port: 'kainada',
-                comment: 'Priced',
-                date: '15/03/2020'
-            },
-            {
-                id: 3,
-                requestId: 'request-908',
-                product: 'Magnesite',
-                type: 'POWDER',
-                qty: 70,
-                price: 5.15,
-                status: 'PRICE REJECTED',
-                port: 'kainada',
-                comment: 'Priced',
-                date: '15/03/2020'
-            }
-        ],
+        data: [],
         selectedRow: null
+    }
+
+    componentDidMount() {
+        axios.get('/order/create').then(result => {
+            this.setState({ data: result.data },()=>console.log(this.state.data)
+            );
+        }).catch(err => console.log(err));
     }
 
     render() {
@@ -126,7 +81,7 @@ class Create extends React.Component {
                                 <th>Request Id</th>
                                 <th>Product</th>
                                 <th>Type</th>
-                                <th>Qunatity</th>
+                                <th>Quantity</th>
                                 <th>Price</th>
                                 <th>Total</th>
                                 <th>Status</th>

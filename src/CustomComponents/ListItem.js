@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class ListItem extends React.Component {
     state = {

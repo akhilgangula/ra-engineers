@@ -1,5 +1,4 @@
 import React from 'react'
-import ListItem from './ListItem'
 class NavHeader extends React.Component {
     
     render =() => {
